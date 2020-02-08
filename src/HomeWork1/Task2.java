@@ -2,7 +2,7 @@ package HomeWork1;
 
 public class Task2 {
     public static void main(String[] args) {
-        int[] arr = {1,0,-2,7,1,8,-3,-2,-1,-7};
+        int[] arr = {1,0,-2,7,1,8,-3,-2,-1,-7,9};
         var1(arr);
     }
     //Вариант 1 (Сложность: N)
@@ -10,6 +10,9 @@ public class Task2 {
         int firstMaxValue = Integer.MIN_VALUE;
         int secondMaxValues = Integer.MIN_VALUE;
         for(int i=0;i<arr.length;i++){
+            if (arr[i]==firstMaxValue){
+                secondMaxValues=firstMaxValue;
+            }
             if (arr[i]>firstMaxValue){
                 secondMaxValues = firstMaxValue;
                 firstMaxValue=arr[i];
