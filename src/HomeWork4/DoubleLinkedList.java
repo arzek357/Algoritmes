@@ -49,14 +49,15 @@ public class DoubleLinkedList<T> implements Iterable<T> {
 
     public T deleteHead() {
         T deletedValue = pre.next.value;
-        pre=pre.next;
+        pre.next.next.prev =pre;
+        pre.next=pre.next.next;
         return deletedValue;
     }
 
     public T deleteTail() {
         T deletedValue = post.prev.value;
-        post=post.prev;
-        post.prev.next=post.next;
+        post.prev.prev.next=post;
+        post.prev = post.prev.prev;
         return deletedValue;
     }
 
@@ -103,10 +104,10 @@ public class DoubleLinkedList<T> implements Iterable<T> {
         ll.insertTail(9);
         ll.insertHead(7);
         ll.forEach(System.out::println);
-        System.out.println("After insert Head(7) and Tail(9)");
+        System.out.println("After delete 2xHead() and Tail()");
+        ll.deleteHead();
+        ll.deleteHead();
         ll.deleteTail();
-        ll.deleteHead();
-        ll.deleteHead();
         ll.forEach(System.out::println);
     }
 }
